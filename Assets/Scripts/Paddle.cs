@@ -15,11 +15,11 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) && gameObject.transform.position.x >= -5.5)
+        if (Input.GetKey(KeyCode.LeftArrow) && gameObject.transform.position.x >= -3.4)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-10f, 0f);
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && gameObject.transform.position.x <= 5.5)
+        else if (Input.GetKey(KeyCode.RightArrow) && gameObject.transform.position.x <= 3.4)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(10f, 0f);
         }

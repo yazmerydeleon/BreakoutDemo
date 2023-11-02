@@ -35,7 +35,7 @@ public class LivesManager : MonoBehaviour
     private void ReSpawnPlayer()
     { 
         Vector3 respawnPos = new Vector3(0f, -4f, 0f);
-
+                
         Instantiate(ballPrefab, respawnPos, Quaternion.identity);
         Debug.Log("Respawned");
     }
