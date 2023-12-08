@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] GameObject ballPrefab = null;
+    [SerializeField] GameObject ballPrefab;
     [SerializeField] TMP_Text ScoreText;
 
     private int score = 0;
@@ -20,6 +20,12 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore()
     { 
         score += 1;
+        ScoreText.text = "Score: " + score;
+    }
+
+    public void IncreaseScoreSpecial()
+    {
+        score += 10;
         ScoreText.text = "Score: " + score;
     }
 }

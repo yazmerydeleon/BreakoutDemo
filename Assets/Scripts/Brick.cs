@@ -5,6 +5,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [SerializeField] ScoreManager ScoreManagerReference;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,6 @@ public class Brick : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ScoreManagerReference.IncreaseScore();
-        Destroy(gameObject);
+        Destroy(gameObject);      
     }
 }

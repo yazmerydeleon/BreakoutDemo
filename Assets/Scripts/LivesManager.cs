@@ -6,37 +6,40 @@ using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour
 {
-    [SerializeField] GameObject ballPrefab = null;
-    [SerializeField] TMP_Text LivesText;
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] TMP_Text livesText;
+    [SerializeField] TMP_Text gameOverText;
 
     private int lives = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        LivesText.text = "Lives: " + lives;
+        gameOverText.enabled = false;
+        livesText.text = "Lives: " + lives;
     }
 
     public void DecreaseLives()
     {
         lives--;
-        LivesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + lives;
+        Debug.Log("Lives: " + lives);
 
-        if(lives > 0)
-        {
-            ReSpawnPlayer();
+    }
+
+    public void ReSpawnPlayer()
+    {
+        Vector3 respawnPos = new Vector3(0f, -2f, 0f);
+        if (lives > 0)
+        {     
+            Instantiate(ballPrefab, respawnPos, Quaternion.identity);
+            Debug.Log("Respawned");            
         }
         else
         {
-            Debug.Log("Game Over");
-        }
-    }
-
-    private void ReSpawnPlayer()
-    { 
-        Vector3 respawnPos = new Vector3(0f, -4f, 0f);
-                
-        Instantiate(ballPrefab, respawnPos, Quaternion.identity);
-        Debug.Log("Respawned");
+            gameOverText.enabled = true;
+        }     
+        
+       
     }
 }

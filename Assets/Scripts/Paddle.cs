@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    private Vector2 startPos = new Vector2(0f, -4.5f); 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip audioClip;
+
+    private Vector2 startPos = new Vector2(0f, -4f); 
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +31,16 @@ public class Paddle : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.PlayOneShot(audioClip, 0.5f); // Adjust the volume as needed
+            }
+        }
     }
 }
